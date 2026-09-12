@@ -139,7 +139,10 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-stone-50 dark:bg-stone-950 text-stone-900 dark:text-stone-100 font-sans pb-16 transition-colors">
+    <div className="min-h-screen flex flex-col bg-stone-50 dark:bg-stone-950 text-stone-900 dark:text-stone-100 font-sans pb-16 transition-colors bg-tech-grid relative">
+      {/* Subtle ambient light glow on top */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-36 bg-blue-500/5 dark:bg-indigo-500/10 blur-3xl pointer-events-none" />
+
       {/* Top Header */}
       <Header
         todayStr={todayStr}
@@ -157,11 +160,11 @@ export const App: React.FC = () => {
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-2xl w-full mx-auto px-4 pt-4 sm:pt-6">
+      <main className="flex-1 max-w-2xl w-full mx-auto px-4 pt-3 sm:pt-5 z-10">
         {loading ? (
           <div className="py-20 flex flex-col items-center justify-center text-stone-400">
-            <div className="w-8 h-8 border-3 border-blue-500 border-t-transparent rounded-full animate-spin mb-3" />
-            <p className="text-xs font-medium">Загрузка привычек...</p>
+            <div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin mb-3 shadow-sm" />
+            <p className="text-xs font-mono tracking-wider uppercase">ИНИЦИАЛИЗАЦИЯ ДАННЫХ...</p>
           </div>
         ) : habits.length === 0 ? (
           /* Empty state for initial launch (C-1, F-3.4) */
@@ -174,21 +177,21 @@ export const App: React.FC = () => {
         ) : (
           <div>
             {/* View Switcher: "На сегодня" vs "Все привычки" */}
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center p-1 bg-stone-200/70 dark:bg-stone-900 rounded-xl">
+            <div className="flex items-center justify-between mb-3.5">
+              <div className="flex items-center p-1 bg-stone-200/60 dark:bg-stone-900/80 backdrop-blur-md rounded-xl border border-stone-200/60 dark:border-stone-800">
                 <button
                   type="button"
                   onClick={() => setActiveTab('today')}
                   className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                     activeTab === 'today'
-                      ? 'bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-50 shadow-xs'
+                      ? 'bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-50 shadow-xs border border-stone-200/40 dark:border-stone-700/60'
                       : 'text-stone-500 dark:text-stone-400 hover:text-stone-800 dark:hover:text-stone-200'
                   }`}
                 >
-                  <CalendarCheck className="w-3.5 h-3.5" />
+                  <CalendarCheck className="w-3.5 h-3.5 text-blue-500 dark:text-cyan-400" />
                   <span>На сегодня</span>
-                  <span className="text-[11px] opacity-75">
-                    ({scheduledTodayHabits.length})
+                  <span className="text-[10px] font-mono px-1 rounded bg-stone-100 dark:bg-stone-900 text-stone-600 dark:text-stone-300">
+                    {scheduledTodayHabits.length}
                   </span>
                 </button>
 
@@ -197,14 +200,14 @@ export const App: React.FC = () => {
                   onClick={() => setActiveTab('all')}
                   className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                     activeTab === 'all'
-                      ? 'bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-50 shadow-xs'
+                      ? 'bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-50 shadow-xs border border-stone-200/40 dark:border-stone-700/60'
                       : 'text-stone-500 dark:text-stone-400 hover:text-stone-800 dark:hover:text-stone-200'
                   }`}
                 >
-                  <ListFilter className="w-3.5 h-3.5" />
+                  <ListFilter className="w-3.5 h-3.5 text-indigo-500 dark:text-indigo-400" />
                   <span>Все привычки</span>
-                  <span className="text-[11px] opacity-75">
-                    ({habits.length})
+                  <span className="text-[10px] font-mono px-1 rounded bg-stone-100 dark:bg-stone-900 text-stone-600 dark:text-stone-300">
+                    {habits.length}
                   </span>
                 </button>
               </div>
@@ -216,7 +219,7 @@ export const App: React.FC = () => {
                     setHabitToEdit(null);
                     setIsFormOpen(true);
                   }}
-                  className="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center space-x-1"
+                  className="text-xs font-semibold text-blue-600 dark:text-cyan-400 hover:underline flex items-center space-x-1"
                 >
                   <Plus className="w-3.5 h-3.5" />
                   <span className="hidden sm:inline">Добавить</span>
@@ -226,22 +229,22 @@ export const App: React.FC = () => {
 
             {/* List of Habits */}
             {displayHabits.length === 0 ? (
-              <div className="py-12 text-center rounded-2xl border border-dashed border-stone-200 dark:border-stone-800 p-6">
-                <p className="text-sm text-stone-500 dark:text-stone-400 mb-2">
+              <div className="py-12 text-center rounded-2xl border border-dashed border-stone-200 dark:border-stone-800 p-6 bg-white/40 dark:bg-stone-900/20 backdrop-blur-xs">
+                <p className="text-sm text-stone-500 dark:text-stone-400 mb-2 font-mono">
                   {activeTab === 'today'
-                    ? 'На сегодня нет запланированных привычек'
-                    : 'Список привычек пуст'}
+                    ? '// На сегодня нет запланированных привычек'
+                    : '// Список привычек пуст'}
                 </p>
                 <button
                   type="button"
                   onClick={() => setActiveTab('all')}
-                  className="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline"
+                  className="text-xs font-semibold text-blue-600 dark:text-cyan-400 hover:underline"
                 >
                   Посмотреть все привычки
                 </button>
               </div>
             ) : (
-              <div className="space-y-2.5">
+              <div className="space-y-2">
                 {displayHabits.map((habit, idx) => (
                   <HabitCard
                     key={habit.id}

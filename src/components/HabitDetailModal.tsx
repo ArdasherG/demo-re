@@ -122,58 +122,63 @@ export const HabitDetailModal: React.FC<HabitDetailModalProps> = ({
           </button>
         </div>
 
-        {/* 3 Metric cards (F-4.2, F-4.3, F-4.4) */}
+        {/* 3 Metric cards with cyber HUD aesthetic (F-4.2, F-4.3, F-4.4) */}
         <div className="grid grid-cols-3 gap-2.5 sm:gap-3 mb-5">
           {/* Current Streak */}
-          <div className="p-3 sm:p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-center">
-            <div className="flex items-center justify-center space-x-1 text-amber-600 dark:text-amber-400 text-xs font-semibold mb-1">
+          <div className="relative overflow-hidden p-3 sm:p-3.5 rounded-2xl bg-amber-500/10 dark:bg-amber-950/20 border border-amber-500/30 text-center shadow-xs">
+            <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-amber-500 to-transparent" />
+            <div className="flex items-center justify-center space-x-1 text-amber-600 dark:text-amber-400 text-[11px] font-mono font-semibold uppercase tracking-wider mb-1">
               <Flame className="w-3.5 h-3.5 fill-amber-500" />
-              <span>Серия</span>
+              <span>СЕРИЯ</span>
             </div>
-            <div className="text-xl sm:text-2xl font-bold text-amber-700 dark:text-amber-300 font-mono">
+            <div className="text-2xl sm:text-3xl font-bold text-amber-700 dark:text-amber-300 font-mono tracking-tight">
               {currentStreak}
             </div>
-            <div className="text-[11px] text-amber-600/80 dark:text-amber-400/80">
+            <div className="text-[10px] font-mono text-amber-600/70 dark:text-amber-400/70 uppercase">
               текущая
             </div>
           </div>
 
           {/* Best Streak */}
-          <div className="p-3 sm:p-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-center">
-            <div className="flex items-center justify-center space-x-1 text-emerald-600 dark:text-emerald-400 text-xs font-semibold mb-1">
+          <div className="relative overflow-hidden p-3 sm:p-3.5 rounded-2xl bg-emerald-500/10 dark:bg-emerald-950/20 border border-emerald-500/30 text-center shadow-xs">
+            <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-500 to-transparent" />
+            <div className="flex items-center justify-center space-x-1 text-emerald-600 dark:text-emerald-400 text-[11px] font-mono font-semibold uppercase tracking-wider mb-1">
               <Trophy className="w-3.5 h-3.5" />
-              <span>Рекорд</span>
+              <span>РЕКОРД</span>
             </div>
-            <div className="text-xl sm:text-2xl font-bold text-emerald-700 dark:text-emerald-300 font-mono">
+            <div className="text-2xl sm:text-3xl font-bold text-emerald-700 dark:text-emerald-300 font-mono tracking-tight">
               {bestStreak}
             </div>
-            <div className="text-[11px] text-emerald-600/80 dark:text-emerald-400/80">
+            <div className="text-[10px] font-mono text-emerald-600/70 dark:text-emerald-400/70 uppercase">
               лучшая
             </div>
           </div>
 
           {/* 30-Day Completion Rate */}
-          <div className="p-3 sm:p-3.5 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-center">
-            <div className="flex items-center justify-center space-x-1 text-blue-600 dark:text-blue-400 text-xs font-semibold mb-1">
+          <div className="relative overflow-hidden p-3 sm:p-3.5 rounded-2xl bg-blue-500/10 dark:bg-cyan-950/20 border border-blue-500/30 dark:border-cyan-500/30 text-center shadow-xs">
+            <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-blue-500 dark:via-cyan-400 to-transparent" />
+            <div className="flex items-center justify-center space-x-1 text-blue-600 dark:text-cyan-400 text-[11px] font-mono font-semibold uppercase tracking-wider mb-1">
               <Percent className="w-3.5 h-3.5" />
-              <span>30 дней</span>
+              <span>30 ДНЕЙ</span>
             </div>
-            <div className="text-xl sm:text-2xl font-bold text-blue-700 dark:text-blue-300 font-mono">
+            <div className="text-2xl sm:text-3xl font-bold text-blue-700 dark:text-cyan-300 font-mono tracking-tight">
               {completionRate}%
             </div>
-            <div className="text-[11px] text-blue-600/80 dark:text-blue-400/80">
+            <div className="text-[10px] font-mono text-blue-600/70 dark:text-cyan-400/70 uppercase">
               успешность
             </div>
           </div>
         </div>
 
         {/* Month Calendar Section (F-4.1, F-2.3, F-2.4, F-2.5) */}
-        <div className="p-3.5 sm:p-4 rounded-2xl bg-stone-50 dark:bg-stone-800/40 border border-stone-200/80 dark:border-stone-800 mb-5">
-          {/* Calendar header with navigation */}
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center space-x-1.5">
-              <CalendarIcon className="w-4 h-4 text-stone-400" />
-              <span className="text-sm font-semibold text-stone-900 dark:text-stone-100">
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-stone-50/80 dark:bg-stone-900/60 border border-stone-200/80 dark:border-stone-800/90 mb-5 relative overflow-hidden">
+          {/* Tech decorative watermark */}
+          <div className="flex items-center justify-between mb-3 border-b border-stone-200/60 dark:border-stone-800 pb-2.5">
+            <div className="flex items-center space-x-2">
+              <div className="w-6 h-6 rounded-lg bg-blue-500/10 text-blue-600 dark:text-cyan-400 flex items-center justify-center border border-blue-500/20">
+                <CalendarIcon className="w-3.5 h-3.5" />
+              </div>
+              <span className="text-sm font-bold text-stone-900 dark:text-stone-100 font-display capitalize">
                 {MONTH_NAMES_RU[currentMonth - 1]} {currentYear}
               </span>
             </div>
@@ -183,15 +188,15 @@ export const HabitDetailModal: React.FC<HabitDetailModalProps> = ({
                 type="button"
                 onClick={resetToToday}
                 title="Перейти к сегодняшнему дню"
-                className="px-2 py-1 text-xs font-medium rounded-lg text-stone-600 dark:text-stone-300 hover:bg-stone-200/60 dark:hover:bg-stone-700/60 transition-colors mr-1"
+                className="px-2 py-1 text-[11px] font-mono font-semibold uppercase rounded-lg text-stone-600 dark:text-stone-300 hover:bg-stone-200/60 dark:hover:bg-stone-800 border border-stone-200/60 dark:border-stone-800 transition-colors mr-1"
               >
-                Сегодня
+                СЕГОДНЯ
               </button>
               <button
                 type="button"
                 onClick={prevMonth}
                 aria-label="Предыдущий месяц"
-                className="w-8 h-8 rounded-lg flex items-center justify-center text-stone-600 dark:text-stone-300 hover:bg-stone-200/60 dark:hover:bg-stone-700/60 transition-colors"
+                className="w-7 h-7 rounded-lg flex items-center justify-center text-stone-600 dark:text-stone-300 hover:bg-stone-200/60 dark:hover:bg-stone-800 border border-stone-200/60 dark:border-stone-800 transition-colors"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
@@ -199,7 +204,7 @@ export const HabitDetailModal: React.FC<HabitDetailModalProps> = ({
                 type="button"
                 onClick={nextMonth}
                 aria-label="Следующий месяц"
-                className="w-8 h-8 rounded-lg flex items-center justify-center text-stone-600 dark:text-stone-300 hover:bg-stone-200/60 dark:hover:bg-stone-700/60 transition-colors"
+                className="w-7 h-7 rounded-lg flex items-center justify-center text-stone-600 dark:text-stone-300 hover:bg-stone-200/60 dark:hover:bg-stone-800 border border-stone-200/60 dark:border-stone-800 transition-colors"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
@@ -207,11 +212,11 @@ export const HabitDetailModal: React.FC<HabitDetailModalProps> = ({
           </div>
 
           {/* Days of week header */}
-          <div className="grid grid-cols-7 gap-1 mb-1 text-center">
+          <div className="grid grid-cols-7 gap-1 mb-1.5 text-center">
             {DAYS_OF_WEEK_SHORT_RU.map((dayName) => (
               <div
                 key={dayName}
-                className="text-[11px] font-semibold uppercase tracking-wider text-stone-400 dark:text-stone-500 py-1"
+                className="text-[10px] font-mono font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500 py-0.5"
               >
                 {dayName}
               </div>
@@ -219,7 +224,7 @@ export const HabitDetailModal: React.FC<HabitDetailModalProps> = ({
           </div>
 
           {/* Calendar Grid */}
-          <div className="grid grid-cols-7 gap-1 text-center">
+          <div className="grid grid-cols-7 gap-1 text-center font-mono">
             {calendarDays.map((day) => {
               const canClick = !day.isFuture;
 
@@ -238,19 +243,20 @@ export const HabitDetailModal: React.FC<HabitDetailModalProps> = ({
                       ? `${day.dateStr}: выполнено (нажмите чтобы отменить)`
                       : `${day.dateStr}: не выполнено (нажмите чтобы отметить)`
                   }
-                  className={`relative aspect-square rounded-xl flex flex-col items-center justify-center text-xs font-medium transition-all ${
+                  className={`relative aspect-square rounded-xl flex flex-col items-center justify-center text-xs font-semibold transition-all ${
                     !day.isCurrentMonth
-                      ? 'opacity-30'
+                      ? 'opacity-25'
                       : day.isFuture
-                      ? 'opacity-30 cursor-not-allowed bg-stone-100/40 dark:bg-stone-900/40 text-stone-400'
+                      ? 'opacity-30 cursor-not-allowed bg-stone-100/30 dark:bg-stone-900/30 text-stone-400 border border-dashed border-stone-200 dark:border-stone-800'
                       : day.isCompleted
                       ? 'text-white shadow-xs scale-[0.98]'
                       : day.isScheduled
-                      ? 'hover:bg-stone-200/60 dark:hover:bg-stone-700/60 text-stone-700 dark:text-stone-300'
+                      ? 'hover:bg-blue-500/10 dark:hover:bg-cyan-500/10 text-stone-700 dark:text-stone-300 border border-stone-200/70 dark:border-stone-800'
                       : 'border border-dashed border-stone-300 dark:border-stone-700 text-stone-400 dark:text-stone-500 hover:bg-stone-200/40'
                   } ${day.isToday ? 'ring-2 ring-blue-500 ring-offset-1 dark:ring-offset-stone-900 font-bold' : ''}`}
                   style={{
                     backgroundColor: day.isCompleted ? habit.color : undefined,
+                    boxShadow: day.isCompleted ? `0 0 10px ${habit.color}60` : undefined,
                   }}
                 >
                   <span>{day.dayOfMonth}</span>
@@ -262,19 +268,19 @@ export const HabitDetailModal: React.FC<HabitDetailModalProps> = ({
             })}
           </div>
 
-          <div className="flex items-center justify-between mt-3 text-[11px] text-stone-400 dark:text-stone-500 px-1">
+          <div className="flex items-center justify-between mt-3 text-[10px] font-mono text-stone-400 dark:text-stone-500 px-1 pt-2 border-t border-stone-200/50 dark:border-stone-800/60">
             <div className="flex items-center space-x-1.5">
               <span
-                className="w-3 h-3 rounded-md"
-                style={{ backgroundColor: habit.color }}
+                className="w-2.5 h-2.5 rounded-full"
+                style={{ backgroundColor: habit.color, boxShadow: `0 0 6px ${habit.color}` }}
               />
-              <span>Выполнено</span>
+              <span>ВЫПОЛНЕНО</span>
             </div>
             <div className="flex items-center space-x-1.5">
-              <span className="w-3 h-3 rounded-md border border-dashed border-stone-400" />
-              <span>Не по расписанию</span>
+              <span className="w-2.5 h-2.5 rounded-sm border border-dashed border-stone-400" />
+              <span>НЕ В ГРАФИКЕ</span>
             </div>
-            <span>Нажмите на день для отметки</span>
+            <span className="hidden sm:inline">КЛИК ДЛЯ ПЕРЕКЛЮЧЕНИЯ</span>
           </div>
         </div>
 
