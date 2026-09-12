@@ -1,0 +1,8 @@
+{
+  "name": "Habit Tracker",
+  "description": "Веб-приложение для отслеживания ежедневных привычек, серий и статистики",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
